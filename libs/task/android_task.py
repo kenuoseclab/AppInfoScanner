@@ -58,6 +58,8 @@ class AndroidTask(object):
             dex_md5 = md5_obj.hexdigest().lower()
             self.file_identifier.append(dex_md5)
             output_path = os.path.join(base_out_path,dex_md5)
+            if not os.path.exists(output_path):
+                os.makedirs(output_path)
             self.__decode_dex__(file_path,backsmali_path,output_path)
         else:
             return "error"
